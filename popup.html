@@ -31,16 +31,33 @@
     </style>
   </head>
   <body>
+
     <p><span id="lblValidationResult" class="title-box">No HTTP(S) page loaded</span></p>
-    <p><span id="infoFromBlockchain" class="title-box"> Trusted CAs from blockchain </span></p>
+    <p><span id="detail" class="text-small">null</br> </span></p>
+
+    <hr>
+
+    <p>
+      Trusted CA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> <span id="infoFromBlockchain"> null</span> </b> <br/>
+      Search Entity:&nbsp;&nbsp;<b> <span id="search_entity"> null</span> </b> </br>
+      Source:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> <span id="source"> null</span> </b> 
+    </p>
+
+    <hr>
     <!-- <p><span id="hostname" class="title-box"> hostname</span></p> -->
-    
-    <p style="margin-top: 18px;"><span id="lblSubjectOrganization"><b></b></span></p>
-    <p id="pIssuer" style="display: none;">
+    <!-- //margin-top: 18px; -->
+    <P> <b> Certificate Information </b> </P>
+    <p style="">Organization:<br>
+      <b>
+        <span id="lblSubjectOrganization"> null </span>
+      </b>
+    </p>
+     <!-- style="display: none;" -->
+    <p id="pIssuer">
       <span>Issuer:</span><br />
       <span id="lblIssuerOrganization"><b></b></span><br />
       <span id="lblIssuerCommonName" class="text-small"></span><br />
     </p>
-    <p><span id="lblMessage">Certificate information will display here when you open an HTTPS page.</span></p>
+    <!-- <p><span id="lblMessage">Certificate information will display here when you open an HTTPS page.</span></p> -->
   </body>
 </html>

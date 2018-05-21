@@ -21,20 +21,28 @@ function fetchOwnCertInfo(hostname){
 
     //console.log(abiArray);
 
-    var web3 = new Web3();
-    web3.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
+    // var web3 = new Web3();
+    // web3.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
 
-    web3.eth.defaultAccount = account;
+    // web3.eth.defaultAccount = account;
 
-    // Get hold of contract instance
+    // // Get hold of contract instance
 
-    var Mycontract = web3.eth.contract(abiArray);
-    var contract = Mycontract.at(contractAddress);
-    console.log("calling the smart contract...");
+    // var Mycontract = web3.eth.contract(abiArray);
+    // var contract = Mycontract.at(contractAddress);
+    // console.log("calling the smart contract...");
 
-    var ret = contract.queryTrustedCAs(hostname);
-    //return "Symantec Corporation";
-    return ret;
+    // var ret = contract.queryTrustedCAs(hostname);
+    return "Symantec Corporation";
+    // return ret;
+}
+
+function get_source_info(){
+    //ip:port
+    return "localhost:5747"
+}
+function get_detail(){
+  return "null"
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -45,11 +53,16 @@ document.addEventListener('DOMContentLoaded', function () {
   if (typeof popupData === 'undefined') return;
 
   infoFromBlockchain = fetchOwnCertInfo(popupData['hostname'])
+  source = get_source_info()
+  detail = get_detail()
+
   console.log(infoFromBlockchain)
   if(infoFromBlockchain == ''){
     infoFromBlockchain = "No Info from blcokchain."
   }
   popupData["infoFromBlockchain"] = infoFromBlockchain
+  popupData["source"] = source
+  popupData["detail"] = detail
 
   document.getElementById("infoFromBlockchain").innerHTML = popupData["infoFromBlockchain"]
 
@@ -66,12 +79,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.getElementById('lblValidationResult').style['background'] = popupData['result_color_hex'];
   document.getElementById('lblValidationResult').innerHTML = popupData['validation_result'];
-  document.getElementById('lblMessage').innerHTML = popupData['message'];
-
-
+  // document.getElementById('lblMessage').innerHTML = popupData['message'];
+  document.getElementById('search_entity').innerHTML = popupData['hostname'];
+  document.getElementById('source').innerHTML = popupData['source'];
+  document.getElementById('detail').innerHTML = popupData['detail'];
+  
   // Identity
   if (popupData["subject_organization"].length > 0) {
-    document.getElementById('lblSubjectOrganization').innerHTML = 'Organization:<br><b>' + popupData['subject_organization'] + '</b>';
+    document.getElementById('lblSubjectOrganization').innerHTML = popupData['subject_organization'];
   } else {
     document.getElementById('lblSubjectOrganization').innerHTML = '';
   }
